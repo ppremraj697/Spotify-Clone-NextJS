@@ -15,7 +15,7 @@ async function refreshAccessToken(token) {
             accessToken: refreshedToken.access_token,
             accessTokenExpires: Date.now + refreshedToken.expires_in * 1000,//= 1 hour as 3600 returns from spotify API
             refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
-            //Replace if new one came back else fall bacl to old refresh token
+            //Replace if new one came back else fall back to old refresh token
         }
 
     } catch (error) {
@@ -65,7 +65,7 @@ export const authOptions = {
             return await refreshAccessToken(token)
         },
 
-        async session({session, token}){
+        async session({ session, token }) {
             session.user.accessToken = token.accessToken;
             session.user.refreshToken = token.refreshToken;
             session.user.username = token.username;
